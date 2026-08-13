@@ -90,7 +90,7 @@ export const api = {
     listMissing: () => apiRequest('/reports/missing'),
     listFound: () => apiRequest('/reports/found'),
     get: (id: string) => apiRequest(`/reports/${id}`),
-    submit: (data: any) => apiRequest('/reports/submit', { method: 'POST', body: JSON.stringify(data) }),
+    submit: (data: any) => apiRequest('/reports/submit', { method: 'POST', body: data instanceof FormData ? data : JSON.stringify(data) }),
     verify: (id: string, status: string) => apiRequest(`/reports/${id}/verify`, { method: 'PATCH', body: JSON.stringify({ status }) }),
   },
   donations: {
